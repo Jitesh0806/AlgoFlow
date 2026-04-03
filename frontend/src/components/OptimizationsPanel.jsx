@@ -1,0 +1,1 @@
+export { OptimizationsPanel as default } from './Panels'
