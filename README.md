@@ -406,8 +406,3 @@ TestFullPipeline    5 tests   bubble sort compiles, optimization reduces IR, no 
 TestSimulator       8 tests   bubble/merge/quick sort, binary search, fibonacci, bfs, metrics
 ```
 
----
-
-## License
-
-MIT — AlgoFlow Compiler Design Project
