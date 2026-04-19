@@ -3,6 +3,7 @@ import { useStore } from '../lib/store'
 
 const TABS = [
   { id: 'animation',     label: '▶ Animation',      tip: 'Step-by-step execution animation' },
+  { id: 'lexer',         label: 'Lexer',              tip: 'Token stream from the lexer' },
   { id: 'ast',           label: 'AST',               tip: 'Abstract Syntax Tree' },
   { id: 'ir',            label: 'IR',                tip: 'Intermediate Representation (Three-Address Code)' },
   { id: 'cfg',           label: 'CFG',               tip: 'Control Flow Graph' },

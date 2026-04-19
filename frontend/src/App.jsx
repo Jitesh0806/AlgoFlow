@@ -6,6 +6,7 @@ import Header from './components/Header'
 import LeftPanel from './components/LeftPanel'
 import TabBar from './components/TabBar'
 import AnimationPanel from './components/AnimationPanel'
+import LexerPanel from './components/LexerPanel'
 import ASTPanel from './components/ASTPanel'
 import IRPanel from './components/IRPanel'
 import CFGPanel from './components/CFGPanel'
@@ -70,6 +71,7 @@ export default function App() {
 
   const TAB_PANELS = {
     animation:     <AnimationPanel />,
+    lexer:         <LexerPanel />,
     ast:           <ASTPanel />,
     ir:            <IRPanel />,
     cfg:           <CFGPanel />,
