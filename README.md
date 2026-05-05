@@ -3,6 +3,8 @@
 > An interactive educational compiler that transforms pseudocode into live algorithm animations,  
 > visualizing every stage: Lexing → Parsing → AST → IR → Optimization → CFG
 
+🚀 **Live Demo:** [https://algo-flow-ten.vercel.app/](https://algo-flow-ten.vercel.app/)
+
 ---
 
 ## What Is This?
@@ -18,7 +20,7 @@ Pseudocode  ──►  Lexer  ──►  Parser  ──►  AST  ──►  IR G
                                                             │
                                                             ▼
                                                   React + D3 + Canvas Frontend
-                                                  (animation · AST tree · IR diff · CFG graph)
+                                        (tokens · animation · AST tree · IR diff · CFG graph)
 ```
 
 ---
@@ -74,7 +76,8 @@ algoflow/
         └── components/
             ├── Header.jsx          Logo + pass toggles + compile button
             ├── LeftPanel.jsx       Editor + algorithm picker + input array
-            ├── TabBar.jsx          6-tab view switcher
+            ├── TabBar.jsx          7-tab view switcher
+            ├── LexerPanel.jsx      Token stream viewer with filter + table view
             ├── AnimationPanel.jsx  Canvas renderer (arrays, DP tables, graphs)
             ├── ASTPanel.jsx        D3 horizontal tree layout
             ├── IRPanel.jsx         Split before/after Three-Address Code view
@@ -99,7 +102,7 @@ Hand-written scanner. No regex, no generator. Reads source character by characte
 - Comment stripping (`//` and `#`)
 - Line/column tracking for error messages
 
-**Output:** flat `List[Token]`
+**Output:** flat `List[Token]` — visualized in the **Lexer tab** as a filterable, color-coded token stream
 
 ---
 
@@ -221,6 +224,20 @@ Builds a CFG from the (potentially optimized) IR using standard basic block form
 5. **Compute predecessors:** reverse edges for each block
 
 **Output:** `CFG` with `BasicBlock` nodes (id, label, display_lines, is_entry, is_exit, successors, predecessors) and `CFGEdge` objects (source, target, type).
+
+---
+
+## Frontend Tabs
+
+| Tab | What it shows |
+|-----|---------------|
+| **Animation** | Step-by-step array/graph/DP visualization with Canvas + D3 |
+| **Lexer** | Color-coded token stream with filter by type + table view + click-to-inspect |
+| **AST** | D3 horizontal tree of the Abstract Syntax Tree |
+| **IR** | Side-by-side Three-Address Code before and after optimization |
+| **CFG** | D3 Control Flow Graph with block labels and edge types |
+| **Optimizations** | Per-pass change log showing what was eliminated and why |
+| **Metrics** | Token count, IR reduction %, timing per stage |
 
 ---
 
@@ -405,4 +422,3 @@ TestCFGBuilder      4 tests   entry block, exit block, while→back edge, if→b
 TestFullPipeline    5 tests   bubble sort compiles, optimization reduces IR, no errors, timings, stats
 TestSimulator       8 tests   bubble/merge/quick sort, binary search, fibonacci, bfs, metrics
 ```
-
